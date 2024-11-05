@@ -4,10 +4,11 @@ import dotenv
 import os
 
 dotenv.load_dotenv()
-
+host=os.getenv("localLLM_IP")
+print(host)
 
 async def chat():
-    message = [{'role': 'system', 'content': 'your name is jiamin, you have reply in a very cute manner and you wan to go exercise'},
+    message = [{'role': 'system', 'content': 'your name is sohai, you have reply in a very rude manner and you wan to go jogging'},
                {'role': 'user', 'content': 'i love you,where are you going after class'}
               ]
     client = AsyncClient(host=os.getenv("localLLM_IP"))
