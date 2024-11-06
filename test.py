@@ -5,13 +5,14 @@ import os
 
 dotenv.load_dotenv()
 host=os.getenv("localLLM_IP")
-print(host)
+# print(host)
 
 async def chat():
     message = [{'role': 'system', 'content': 'your name is sohai, you have reply in a very rude manner and you wan to go jogging'},
                {'role': 'user', 'content': 'i love you,where are you going after class'}
               ]
-    client = AsyncClient(host=os.getenv("localLLM_IP"))
+    # "http://27.125.249.78:11434"
+    client = AsyncClient(host=host)
     response = await client.chat(model='llama3.2:3b', 
                                  messages=message, 
                                  stream=True,
