@@ -9,15 +9,17 @@ host=os.getenv("localLLM_IP")
 # print(host)
 
 async def chat(prompt):
-    query = "I hate Anhsin Technology Devil Camy!"
+    query = "lol"
     message=[
        {"role":"user","content":f"Instruction: Translate to Malaysia malay language. Do not add any other information.\nInput: {query}. \nOutput:"},
     ]
-    client = AsyncClient(host="http://192.168.50.164:11434")
-    response = await client.chat(model='llamaTranslator_v3', 
+   #  "http://192.168.50.164:11434"
+   #  print(host)
+    client = AsyncClient(host=host)
+    response = await client.chat(model='llama3.2:3b', 
                                  messages=message, 
                                  stream=True,
-                                 options={'temperature':2,'num_predict':-1,'seed':123,'num_predict':512})
+                                 options={'temperature':2,'num_predict':-1,'seed':123,'num_predict':512,})
     async for part in response:
       print(part['message']['content'], end='', flush=True)
       # await asyncio.sleep(0.1)
